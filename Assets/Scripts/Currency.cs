@@ -8,7 +8,7 @@ using System;
 
 public class Currency : MonoBehaviour
 {
-    static class Tree
+    public static class Tree
     {
         public static int trees;
         public static int treesCarbonCost;
@@ -32,6 +32,7 @@ public class Currency : MonoBehaviour
             }
         }
     }
+
     private static double knowledge;
     private static double carbonCredit;
     private int year;
@@ -42,7 +43,7 @@ public class Currency : MonoBehaviour
     public TextMeshProUGUI displayYear;
     public TextMeshProUGUI displayMonth;
     private int numberUpdates;
-    private int tickRate = 5;
+    private int tickRate = 60;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +61,7 @@ public class Currency : MonoBehaviour
     // FixedUpdate is called 60 times per second
     void FixedUpdate()
     {
-        if (numberUpdates % (60*10) == 0)
+        if (numberUpdates % (tickRate*10) == 0)
         {
             numberUpdates = 1;
             month++;
@@ -72,18 +73,28 @@ public class Currency : MonoBehaviour
         }
         numberUpdates++;
         carbonCredit += 1.0 / tickRate;
+        carbonCredit += 1.0 * Tree.trees / tickRate;
         knowledge += 1.0 / 5 / tickRate;
-        Tree.PlantTrees();
     }
 
     void Update()
     {
 
         displayCarbonCredit.text = string.Format("Créditos de Carbono: {0:0.}", carbonCredit);
-        displayKnowledge.text = string.Format("Inteligência: {0:0.}", knowledge);
+        displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
         displayMonth.text = string.Format("Mês: {0}", month);
         displayYear.text = string.Format("Ano: {0}", year);
         displayTrees.text = string.Format("Arvores: {0}", Tree.trees);
     }
 
+
+    public void PlantTree()
+    {
+        Tree.PlantTrees();
+    }
+
+    public void SetGameSpeed(int newTickRate)
+    {
+        tickRate = newTickRate;
+    }
 }
