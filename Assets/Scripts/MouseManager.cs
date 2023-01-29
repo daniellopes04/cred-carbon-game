@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 [System.Serializable]
 public class EventVector3 : UnityEvent<Vector3> { }
@@ -17,6 +19,8 @@ public class MouseManager : MonoBehaviour
     //public Texture2D doorway;   // Cursor for doorways
     //public Texture2D combat;    // Cursor for combat actions
 
+    public TMP_Text ccCounter; 
+
     //public EventVector3 OnClickEnvironment;
 
     PopupMessage popupMessage;
@@ -26,6 +30,7 @@ public class MouseManager : MonoBehaviour
     void Update()
     {
         RaycastHit hit;
+        int ccValue = Int32.Parse(ccCounter.text);
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 50, clickableLayer.value))
         {
@@ -50,6 +55,8 @@ public class MouseManager : MonoBehaviour
                 {    
                     popupMessage.Open(hit.collider.gameObject.name, "This is " + hit.collider.gameObject.name + "!");
                     Debug.Log("REGION");
+                    ccValue++;
+                    ccCounter.text = ccValue.ToString();
                 }
                 else 
                 {
