@@ -34,7 +34,7 @@ public class Currency : MonoBehaviour
     }
 
     private static double knowledge;
-    private static double carbonCredit;
+    public static double carbonCredit;
     private int year;
     private int month;
     public TextMeshProUGUI displayKnowledge;
@@ -72,19 +72,19 @@ public class Currency : MonoBehaviour
             };
         }
         numberUpdates++;
-        carbonCredit += 1.0 / tickRate;
-        carbonCredit += 1.0 * Tree.trees / tickRate;
+        carbonCredit += 0.1 / tickRate;
+        carbonCredit += 0.1 * Tree.trees / tickRate;
         knowledge += 1.0 / 5 / tickRate;
     }
 
     void Update()
     {
 
-        displayCarbonCredit.text = string.Format("Créditos de Carbono: {0:0.}", carbonCredit);
-        displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
-        displayMonth.text = string.Format("Mês: {0}", month);
-        displayYear.text = string.Format("Ano: {0}", year);
-        displayTrees.text = string.Format("Arvores: {0}", Tree.trees);
+        displayCarbonCredit.text = string.Format("{0:0.}", carbonCredit);
+        //displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
+        //displayMonth.text = string.Format("Mês: {0}", month);
+        //displayYear.text = string.Format("Ano: {0}", year);
+        //displayTrees.text = string.Format("Arvores: {0}", Tree.trees);
     }
 
 
