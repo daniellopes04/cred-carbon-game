@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 206761821}
   - component: {fileID: 206761820}
   m_Layer: 0
-  m_Name: ProgressBar_Canvas (1)
+  m_Name: CarbonCredit_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &291232883
 RectTransform:
   m_ObjectHideFlags: 0
@@ -947,8 +947,8 @@ MonoBehaviour:
   clickableLayer:
     serializedVersion: 2
     m_Bits: 64
-  pointer: {fileID: 2800000, guid: 770f721b044d0d247b0ce52b6adce677, type: 3}
-  target: {fileID: 2800000, guid: 5801d26d4f07554ac9e821678fa7a5f0, type: 3}
+  pointer: {fileID: 2800000, guid: 2f94194120c592a9cbf4606ef30b11d5, type: 3}
+  target: {fileID: 2800000, guid: 89d49f5b6f7be2fca8fa64f95f00be2e, type: 3}
   ccCounter: {fileID: 1141636203}
 --- !u!1 &340039506
 GameObject:
