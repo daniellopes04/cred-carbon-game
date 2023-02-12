@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18012267, g: 0.22552116, b: 0.30682415, a: 1}
+  m_IndirectSpecularColor: {r: 0.18012282, g: 0.22552153, b: 0.3068246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936496931}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Currency, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
@@ -517,8 +517,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103821933}
-  - component: {fileID: 103821934}
   - component: {fileID: 103821932}
+  - component: {fileID: 103821934}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -566,7 +566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7753f61084bf38c4fa02f3265687a98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBar: {fileID: 760957171}
+  displayKnowledge: {fileID: 0}
+  displayCarbonCredit: {fileID: 1141636203}
+  displayTrees: {fileID: 0}
+  displayYear: {fileID: 0}
+  displayMonth: {fileID: 0}
 --- !u!1 &107990109
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,7 +2739,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936496931}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Currency, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
@@ -3294,7 +3298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936496931}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Currency, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
@@ -3353,7 +3357,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1936496930}
-  - component: {fileID: 1936496931}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -3378,23 +3381,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1936496931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1936496929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7ed7a8fa880c84da858e87c7995a4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayKnowledge: {fileID: 0}
-  displayCarbonCredit: {fileID: 1141636203}
-  displayTrees: {fileID: 0}
-  displayYear: {fileID: 0}
-  displayMonth: {fileID: 0}
 --- !u!1 &1954745483
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,7 +3713,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936496931}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Currency, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3

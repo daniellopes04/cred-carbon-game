@@ -55,7 +55,7 @@ public class MouseManager : MonoBehaviour
                 {    
                     popupMessage.Open(hit.collider.gameObject.name, "This is " + hit.collider.gameObject.name + "!");
                     Debug.Log("REGION");
-                    Currency.carbonCredit++;
+                    GameController.carbonCredit++;
                 }
                 else 
                 {
