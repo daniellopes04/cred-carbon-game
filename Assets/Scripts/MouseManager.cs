@@ -21,10 +21,12 @@ public class MouseManager : MonoBehaviour
     //public Texture2D combat;    // Cursor for combat actions
 
     public TMP_Text ccCounter; 
+    public GameObject dialogUI;
+    public GameObject actionUI;
 
     //public EventVector3 OnClickEnvironment;
 
-    PopupMessage popupMessage;
+
     GameObject gameController;
 
     // Update is called once per frame
@@ -32,7 +34,9 @@ public class MouseManager : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 50, clickableLayer.value))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 50, clickableLayer.value) 
+            && !dialogUI.activeSelf
+            && !actionUI.activeSelf)
         {
             bool region = false;
 
@@ -49,13 +53,13 @@ public class MouseManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 gameController = GameObject.Find("GameController");
-                popupMessage = gameController.GetComponent<PopupMessage>();
+                PopupMessage popupMessage = dialogUI.GetComponent<PopupMessage>();
 
                 if (region) 
                 {    
                     popupMessage.Open(hit.collider.gameObject.name, "This is " + hit.collider.gameObject.name + "!");
                     Debug.Log("REGION");
-                    GameController.carbonCredit++;
+                    //GameController.carbonCredit++;
                 }
                 else 
                 {
