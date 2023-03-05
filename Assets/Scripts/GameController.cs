@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 {
 
     public static double knowledge;
-    public static double carbonCredit;
+    [SerializeField] public static double carbonCredit;
     private int year;
     private int month;
     public TextMeshProUGUI displayKnowledge;
@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayMonth;
     private int numberUpdates;
     private int tickRate = 60;
-    public List<Region> Regions;
+    [SerializeField] public List<Region> Regions;
 
     // Start is called before the first frame update
     void Start()
@@ -61,11 +61,10 @@ public class GameController : MonoBehaviour
     {
 
         displayCarbonCredit.text = string.Format("{0:0.}", carbonCredit);
-        PlantTree(0);
         //displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
         //displayMonth.text = string.Format("Mês: {0}", month);
         //displayYear.text = string.Format("Ano: {0}", year);
-        //displayTrees.text = string.Format("Arvores: {0}", Tree.trees);
+        displayTrees.text = string.Format("{0} m²", Regions[0].tree.trees*100);
     }
 
 
