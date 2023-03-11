@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18012267, g: 0.22552116, b: 0.30682415, a: 1}
+  m_IndirectSpecularColor: {r: 0.18012282, g: 0.22552153, b: 0.3068246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -207,14 +207,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Currency, Assembly-CSharp
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 15
+          m_IntArgument: 5
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -703,7 +703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayKnowledge: {fileID: 0}
   displayCarbonCredit: {fileID: 1141636203}
-  displayTrees: {fileID: 0}
+  displayTrees: {fileID: 870719495}
   displayYear: {fileID: 0}
   displayMonth: {fileID: 0}
 --- !u!1 &107990109
@@ -1503,9 +1503,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 830663446}
-        m_TargetAssemblyTypeName: PopupMessage, Assembly-CSharp
-        m_MethodName: ExecuteAction
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: PlantTree
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3724,8 +3724,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Currency, Assembly-CSharp
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
         m_Arguments:
@@ -4571,8 +4571,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Currency, Assembly-CSharp
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
         m_Arguments:
@@ -4986,8 +4986,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Currency, Assembly-CSharp
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: SetGameSpeed
         m_Mode: 3
         m_Arguments:

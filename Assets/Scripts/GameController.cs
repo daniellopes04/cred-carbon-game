@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
 {
 
     public static double knowledge;
-    [SerializeField] public static double carbonCredit;
+    public static double carbonCredit;
     private int year;
     private int month;
     public TextMeshProUGUI displayKnowledge;
@@ -20,22 +20,15 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayMonth;
     private int numberUpdates;
     private int tickRate = 60;
-    [SerializeField] public List<Region> Regions;
 
     // Start is called before the first frame update
     void Start()
     {
-        Regions = new List<Region>();
         carbonCredit = 0;
         knowledge = 0;
         year = 1960;
         month = 1;
         numberUpdates = 1;
-        for (int i = 0; i < 7; i++)
-        {
-            Regions.Add(new Region());
-
-        }
     }
 
     // FixedUpdate is called 60 times per second
@@ -53,7 +46,7 @@ public class GameController : MonoBehaviour
         }
         numberUpdates++;
         carbonCredit += 0.1 / tickRate;
-        carbonCredit += 0.1 * Regions[0].tree.trees / tickRate;
+        carbonCredit += 0.1 * Actions.Tree.trees / tickRate;
         knowledge += 1.0 / 5 / tickRate;
     }
 
@@ -64,14 +57,13 @@ public class GameController : MonoBehaviour
         //displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
         //displayMonth.text = string.Format("Mês: {0}", month);
         //displayYear.text = string.Format("Ano: {0}", year);
-        displayTrees.text = string.Format("{0} m²", Regions[0].tree.trees*100);
+        displayTrees.text = string.Format("{0} m²", Actions.Tree.trees*100);
     }
 
 
-    public void PlantTree(int n)
+    public void PlantTree()
     {
-        if (n >= 0 && n < 7)
-            Regions[n].tree.PlantTrees();
+            Actions.Tree.PlantTrees();
     }
 
     public void SetGameSpeed(int newTickRate)

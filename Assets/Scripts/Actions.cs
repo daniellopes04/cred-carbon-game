@@ -6,26 +6,19 @@ using UnityEngine;
 public class Actions
 {
 
-    public class Tree
+    public static class Tree
     {
-        public int trees;
-        public int treesCarbonCost;
-        public int treesKnowledgeCost;
+        public static int trees = 0;
+        public static int treesCarbonCost = 1;
+        public static int treesKnowledgeCost = 1;
 
-
-        public Tree()
-        {
-            this.trees = 0;
-            this.treesCarbonCost = 1;
-            this.treesKnowledgeCost = 1;
-        }
-        public bool CanAfford()
+        public static bool CanAfford()
         {
             if (treesCarbonCost <= GameController.carbonCredit && treesKnowledgeCost <= GameController.knowledge) return true;
             else return false;
         }
 
-        public void PlantTrees()
+        public static void PlantTrees()
         {
             if (CanAfford())
             {
