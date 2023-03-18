@@ -24,16 +24,16 @@ public class SliderManager : MonoBehaviour
                 break;
             }
 
-            if (progress > 40 && progress < 70) {
+            if (progress > 70 && progress < 90) {
                 slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
-            } else if (progress >= 70) {
+            } else if (progress >= 90) {
                 slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
             }
 
             progress++;
             slider.value = progress;
             valueText.text = progress.ToString();
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.2f);
         }
     }
 
