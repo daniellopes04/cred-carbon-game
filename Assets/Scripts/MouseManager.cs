@@ -17,15 +17,10 @@ public class MouseManager : MonoBehaviour
     // Swap cursors per object
     public Texture2D pointer;   // Normal cursor
     public Texture2D target;    // Target cursor (for clickable objects)
-    //public Texture2D doorway;   // Cursor for doorways
-    //public Texture2D combat;    // Cursor for combat actions
 
     public TMP_Text ccCounter; 
     public GameObject dialogUI;
     public GameObject actionUI;
-
-    //public EventVector3 OnClickEnvironment;
-
 
     GameObject gameController;
 
@@ -38,33 +33,12 @@ public class MouseManager : MonoBehaviour
             && !dialogUI.activeSelf
             && !actionUI.activeSelf)
         {
-            bool region = false;
-
-            if (hit.collider.gameObject.tag == "Region")
+            if (hit.collider.gameObject.tag == "Clickable")
             {
                 Cursor.SetCursor(target, new Vector2(16, 16), CursorMode.Auto);
-                region = true;
             }
             else {
                 Cursor.SetCursor(pointer, new Vector2(16, 16), CursorMode.Auto);
-            }
-
-            // 0 is left mouse button
-            if (Input.GetMouseButtonDown(0))
-            {
-                gameController = GameObject.Find("GameController");
-                PopupMessage popupMessage = dialogUI.GetComponent<PopupMessage>();
-
-                if (region) 
-                {    
-                    popupMessage.Open(hit.collider.gameObject.name, "This is " + hit.collider.gameObject.name + "!");
-                    Debug.Log("REGION");
-                    //GameController.carbonCredit++;
-                }
-                else 
-                {
-                    Debug.Log("MAP");
-                }
             }
         }
         else

@@ -76,10 +76,10 @@ public class GameController : MonoBehaviour
         
         // Resource Calculations
         carbonCredit += 0.1 / tickRate;  // Ganho passivo
-        carbonCredit += 0.1 * Actions.Tree.trees / tickRate; // Ganho por árvores
-        carbonCredit -= 0.3 * Actions.Thermal.factories / tickRate; // Perda por termelétricas
+        carbonCredit += 0.1 * Actions.Tree.trees / tickRate; // Ganho por ï¿½rvores
+        carbonCredit -= 0.3 * Actions.Thermal.factories / tickRate; // Perda por termelï¿½tricas
         carbonCredit -= 0.1 * Actions.Solar.panels / tickRate; // Perda por paineis de energia solar
-        carbonCredit -= 0.025 * Actions.Wind.turbines / tickRate; // Perda por energia eólica
+        carbonCredit -= 0.025 * Actions.Wind.turbines / tickRate; // Perda por energia eï¿½lica
 
         knowledge += 0.1 / tickRate;
         knowledge += 0.3 * Actions.Thermal.factories / tickRate;
@@ -93,9 +93,9 @@ public class GameController : MonoBehaviour
 
         displayCarbonCredit.text = string.Format("{0:0.}", carbonCredit);
         //displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
-        //displayMonth.text = string.Format("Mês: {0}", month);
-        //displayYear.text = string.Format("Ano: {0}", year);
-        displayTrees.text = string.Format("{0} m²", Actions.Tree.trees*100);
+        //displayMonth.text = string.Format("Mï¿½s: {0}", month);
+        displayYear.text = string.Format("Year: {0}", year);
+        displayTrees.text = string.Format("{0} mï¿½", Actions.Tree.trees*100);
     }
 
 

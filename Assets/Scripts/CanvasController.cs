@@ -7,9 +7,12 @@ using UnityEngine.EventSystems;
 
 public class CanvasController : MonoBehaviour
 {
+    public Sprite greenButtonSprite;
+    public Sprite greyButtonSprite;
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
+    bool isActionOn = false;
 
     void Start()
     {
@@ -22,7 +25,7 @@ public class CanvasController : MonoBehaviour
     void Update()
     {
         //Check if the left Mouse button is clicked
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetMouseButtonDown(0))
         {
             //Set up the new Pointer Event
             m_PointerEventData = new PointerEventData(m_EventSystem);
@@ -38,6 +41,17 @@ public class CanvasController : MonoBehaviour
             //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
             foreach (RaycastResult result in results)
             {
+                if (result.gameObject.tag == "ActionButton")
+                {
+                    Image buttonImage = result.gameObject.GetComponent<Image>();
+                    if (buttonImage.sprite.name == "SquareButton_green") {
+                        buttonImage.sprite = greyButtonSprite;
+                        isActionOn = false;
+                    } else if (!isActionOn) {
+                        buttonImage.sprite = greenButtonSprite;
+                        isActionOn = true;
+                    }
+                }
                 Debug.Log("Hit " + result.gameObject.name);
             }
         }
