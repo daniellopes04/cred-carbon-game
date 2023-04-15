@@ -7,7 +7,6 @@ using TMPro;
 public class SliderManager : MonoBehaviour
 {
     public TMP_Text valueText;
-    int progress = 0;
     public Slider slider;
     Color green = new Color(50f/255f, 233f/255f, 106f/255f);
     Color yellow = new Color(233f/255f, 184f/255f, 50f/255f);
@@ -20,19 +19,17 @@ public class SliderManager : MonoBehaviour
     IEnumerator UpdateProgress() {
         for(;;)
         {
-            if (progress >= 100) {
-                break;
+            if (GameController.progress >= 100) {
             }
 
-            if (progress > 70 && progress < 90) {
+            if (GameController.progress > 70 && GameController.progress < 90) {
                 slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
-            } else if (progress >= 90) {
+            } else if (GameController.progress >= 90) {
                 slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
             }
 
-            progress++;
-            slider.value = progress;
-            valueText.text = progress.ToString();
+            slider.value = GameController.progress;
+            valueText.text = GameController.progress.ToString();
             yield return new WaitForSeconds(.2f);
         }
     }

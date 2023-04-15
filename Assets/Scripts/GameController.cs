@@ -12,7 +12,12 @@ public class GameController : MonoBehaviour
 
     public static double knowledge;
     public static double carbonCredit;
+    public static double carbonCreditGoal;
+    public static double totalCarbonCredit;
+    public static double previousCarbonCredit;
+    public static int progress;
     private int year;
+    private int goalYear;
     private int month;
     private int actionID;
     public TextMeshProUGUI displayKnowledge;
@@ -26,6 +31,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        goalYear = 2050;
         carbonCredit = 0;
         knowledge = 0;
         year = 1997;
@@ -37,7 +43,7 @@ public class GameController : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
-        if (numberUpdates % (tickRate * 10) == 0)  // Time Calculations
+        if (numberUpdates % (tickRate * 2) == 0)  // 1 mês a cada 2s
         {
             numberUpdates = 1;
             month++;
@@ -72,16 +78,21 @@ public class GameController : MonoBehaviour
                 break;
 
         }
- 
-        
-        // Resource Calculations
-        carbonCredit += 0.1 / tickRate;  // Ganho passivo
-        carbonCredit += 0.1 * Actions.Tree.trees / tickRate; // Ganho por ï¿½rvores
-        carbonCredit -= 0.3 * Actions.Thermal.factories / tickRate; // Perda por termelï¿½tricas
-        carbonCredit -= 0.1 * Actions.Solar.panels / tickRate; // Perda por paineis de energia solar
-        carbonCredit -= 0.025 * Actions.Wind.turbines / tickRate; // Perda por energia eï¿½lica
 
-        knowledge += 0.1 / tickRate;
+
+        // Resource Calculations
+        previousCarbonCredit = carbonCredit;
+        carbonCredit += 0.1 / tickRate;  // Ganho passivo
+        carbonCredit += 0.1 * Actions.Tree.trees / tickRate; // Ganho por arvores
+        carbonCredit -= 0.3 * Actions.Thermal.factories / tickRate; // Perda por termeletricas
+        carbonCredit -= 0.1 * Actions.Solar.panels / tickRate; // Perda por paineis de energia solar
+        carbonCredit -= 0.025 * Actions.Wind.turbines / tickRate; // Perda por energia eolica
+        totalCarbonCredit += Math.Max(carbonCredit - previousCarbonCredit, 0); // Calculando o crédito de carbono total
+
+        progress = (int) Math.Max((100 - totalCarbonCredit / ObjectiveFunction((year - 1997) * 12 + month)*100),0);
+
+
+        knowledge += 0.01 / tickRate;
         knowledge += 0.3 * Actions.Thermal.factories / tickRate;
         knowledge += 0.1 * Actions.Solar.panels / tickRate;
         knowledge += 0.2 * Actions.Wind.turbines / tickRate;
@@ -92,10 +103,10 @@ public class GameController : MonoBehaviour
     {
 
         displayCarbonCredit.text = string.Format("{0:0.}", carbonCredit);
-        //displayKnowledge.text = string.Format("Conhecimento: {0:0.}", knowledge);
-        //displayMonth.text = string.Format("Mï¿½s: {0}", month);
+        displayKnowledge.text = string.Format("{0:0.}", knowledge);
+        //displayMonth.text = string.Format("Mes: {0}", month);
         displayYear.text = string.Format("Year: {0}", year);
-        displayTrees.text = string.Format("{0} mï¿½", Actions.Tree.trees*100);
+        displayTrees.text = string.Format("{0} m2", Actions.Tree.trees*100);
     }
 
 
@@ -107,5 +118,10 @@ public class GameController : MonoBehaviour
     public void SetGameSpeed(int newTickRate)
     {
         tickRate = newTickRate;
+    }
+
+    public double ObjectiveFunction(double n)    // Função quadrática que serve para cálculo do progresso do jogador | Objetivo = 100k CC
+    {
+        return 0.2472 * n * n;
     }
 }
