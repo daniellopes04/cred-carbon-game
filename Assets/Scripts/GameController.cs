@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
-        if (numberUpdates % (tickRate * 2) == 0)  // 1 mês a cada 2s
+        if (numberUpdates % (tickRate * 2) == 0)  // 1 mï¿½s a cada 2s
         {
             numberUpdates = 1;
             month++;
@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour
         carbonCredit -= 0.3 * Actions.Thermal.factories / tickRate; // Perda por termeletricas
         carbonCredit -= 0.1 * Actions.Solar.panels / tickRate; // Perda por paineis de energia solar
         carbonCredit -= 0.025 * Actions.Wind.turbines / tickRate; // Perda por energia eolica
-        totalCarbonCredit += Math.Max(carbonCredit - previousCarbonCredit, 0); // Calculando o crédito de carbono total
+        totalCarbonCredit += Math.Max(carbonCredit - previousCarbonCredit, 0); // Calculando o crï¿½dito de carbono total
 
         progress = (int) Math.Max((100 - totalCarbonCredit / ObjectiveFunction((year - 1997) * 12 + month)*100),0);
 
@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour
         tickRate = newTickRate;
     }
 
-    public double ObjectiveFunction(double n)    // Função quadrática que serve para cálculo do progresso do jogador | Objetivo = 100k CC
+    public double ObjectiveFunction(double n)    // Funï¿½ï¿½o quadrï¿½tica que serve para cï¿½lculo do progresso do jogador | Objetivo = 100k CC
     {
         return 0.2472 * n * n;
     }

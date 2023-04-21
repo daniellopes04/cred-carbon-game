@@ -13,6 +13,8 @@ public class CanvasController : MonoBehaviour
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
     bool isActionOn = false;
+    Image imageOn;
+
 
     void Start()
     {
@@ -44,12 +46,20 @@ public class CanvasController : MonoBehaviour
                 if (result.gameObject.tag == "ActionButton")
                 {
                     Image buttonImage = result.gameObject.GetComponent<Image>();
+
                     if (buttonImage.sprite.name == "SquareButton_green") {
                         buttonImage.sprite = greyButtonSprite;
                         isActionOn = false;
-                    } else if (!isActionOn) {
+                        imageOn = null;
+                    } else {
                         buttonImage.sprite = greenButtonSprite;
+
+                        if (isActionOn && imageOn != null) {
+                            imageOn.sprite = greyButtonSprite;
+                        }
+                        
                         isActionOn = true;
+                        imageOn = result.gameObject.GetComponent<Image>();
                     }
                 }
                 Debug.Log("Hit " + result.gameObject.name);
