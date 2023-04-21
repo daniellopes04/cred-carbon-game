@@ -11,11 +11,14 @@ public class GameController : MonoBehaviour
 {
 
     public static double knowledge;
+    public static double knowledgeGain;
     public static double carbonCredit;
-    public static double carbonCreditGoal;
+    public static double CCgoalDifficulty;
     public static double totalCarbonCredit;
-    public static double previousCarbonCredit;
+    public static double carbonCreditGoal;
+    public static double carbonCreditGain;
     public static int progress;
+    public static int gameEnded;
     private int year;
     private int goalYear;
     private int month;
@@ -31,6 +34,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameEnded = 0;
         goalYear = 2050;
         carbonCredit = 0;
         knowledge = 0;
@@ -38,65 +42,89 @@ public class GameController : MonoBehaviour
         month = 1;
         numberUpdates = 1;
         actionID = 0;
+        CCgoalDifficulty = 1;
+        totalCarbonCredit = 50;
+        carbonCreditGoal = 100000 * CCgoalDifficulty;
     }
 
     // FixedUpdate is called 50 times per second
     void FixedUpdate()
     {
-        if (numberUpdates % (tickRate * 2) == 0)  // 1 mï¿½s a cada 2s
+        if (gameEnded == 0)
         {
-            numberUpdates = 1;
-            month++;
-            if (month > 12)
+            if (year >= 2050 || progress >= 100 || carbonCredit < 0)
             {
-                month = 1;
-                year++;
-            };
+                gameEnded = 2; // perdeu
+            }
+
+            if (totalCarbonCredit>= carbonCreditGoal)
+            {
+                gameEnded = 1; // ganhou
+            }
+
+
+            if (numberUpdates % (tickRate * 2) == 0)  // 1 mês a cada 2s
+            {
+                numberUpdates = 1;
+                month++;
+                if (month > 12)
+                {
+                    month = 1;
+                    year++;
+                };
+            }
+
+            numberUpdates++;
+
+            switch (actionID)  // Action Calculations
+            {
+                case 0: // Idle
+                    break;
+
+                case 1: // Plant Trees
+                    Actions.Tree.PlantTrees(50 / tickRate);
+                    break;
+
+                case 2: // Build Factories 
+                    Actions.Thermal.BuildFactory(50 / tickRate);
+                    break;
+
+                case 3: // Build Solar Panels
+                    Actions.Solar.BuildPanels(50 / tickRate);
+                    break;
+
+                case 4: // Build Wind Turbines 
+                    Actions.Wind.BuildTurbine(50 / tickRate);
+                    break;
+
+            }
+
+
+            // Resource Calculations
+            carbonCreditGain = (
+                0.1 + // Ganho passivo
+                Actions.Tree.getCarbonCreditIncome() + // Ganho por árvores
+                Actions.Thermal.getCarbonCreditIncome() + // Ganho por termelétricas
+                Actions.Solar.getCarbonCreditIncome() + // Ganho por painéis solares
+                Actions.Wind.getCarbonCreditIncome() // Ganho por turbinas eólicas
+                ) / tickRate;
+            carbonCredit += carbonCreditGain;
+
+            totalCarbonCredit += carbonCreditGain ; // Calculando o crédito de carbono total
+
+            progress = (int) Math.Max((100 - totalCarbonCredit / ObjectiveFunction((year - 1997) * 12 + month)*100)*1.2,0);
+
+
+            knowledgeGain = (
+                0.01 +
+                Actions.Thermal.getKnowledgeIncome() +
+                Actions.Solar.getKnowledgeIncome() +
+                Actions.Wind.getKnowledgeIncome()
+                ) / tickRate;
+
+            knowledge += knowledgeGain;
+
         }
-
-        numberUpdates++;
-
-        switch (actionID)  // Action Calculations
-        {
-            case 0: // Idle
-                break;
-
-            case 1: // Plant Trees
-                Actions.Tree.PlantTrees( 50 / tickRate);
-                break;
-
-            case 2: // Build Factories 
-                Actions.Thermal.BuildFactory(50 / tickRate);
-                break;
-
-            case 3: // Build Solar Panels
-                Actions.Solar.BuildPanels(50 / tickRate);
-                break;
-
-            case 4: // Build Wind Turbines 
-                Actions.Wind.BuildTurbine( 50 / tickRate);
-                break;
-
-        }
-
-
-        // Resource Calculations
-        previousCarbonCredit = carbonCredit;
-        carbonCredit += 0.1 / tickRate;  // Ganho passivo
-        carbonCredit += 0.1 * Actions.Tree.trees / tickRate; // Ganho por arvores
-        carbonCredit -= 0.3 * Actions.Thermal.factories / tickRate; // Perda por termeletricas
-        carbonCredit -= 0.1 * Actions.Solar.panels / tickRate; // Perda por paineis de energia solar
-        carbonCredit -= 0.025 * Actions.Wind.turbines / tickRate; // Perda por energia eolica
-        totalCarbonCredit += Math.Max(carbonCredit - previousCarbonCredit, 0); // Calculando o crï¿½dito de carbono total
-
-        progress = (int) Math.Max((100 - totalCarbonCredit / ObjectiveFunction((year - 1997) * 12 + month)*100),0);
-
-
-        knowledge += 0.01 / tickRate;
-        knowledge += 0.3 * Actions.Thermal.factories / tickRate;
-        knowledge += 0.1 * Actions.Solar.panels / tickRate;
-        knowledge += 0.2 * Actions.Wind.turbines / tickRate;
-
     }
 
     void Update()
@@ -122,6 +150,32 @@ public class GameController : MonoBehaviour
 
     public double ObjectiveFunction(double n)    // Funï¿½ï¿½o quadrï¿½tica que serve para cï¿½lculo do progresso do jogador | Objetivo = 100k CC
     {
-        return 0.2472 * n * n;
+        return CCgoalDifficulty * 0.2472 * n * n;
+    }
+
+    public void UpgradeAction(int n)
+    {
+        switch (n)  // Action Calculations
+        {
+            case 0: // Idle
+                break;
+
+            case 1: // Plant Trees
+                Actions.Tree.Upgrade();
+                break;
+
+            case 2: // Build Factories 
+                Actions.Thermal.Upgrade();
+                break;
+
+            case 3: // Build Solar Panels
+                Actions.Solar.Upgrade();
+                break;
+
+            case 4: // Build Wind Turbines 
+                Actions.Wind.Upgrade();
+                break;
+
+        }
     }
 }

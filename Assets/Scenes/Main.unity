@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18012267, g: 0.22552116, b: 0.30682415, a: 1}
+  m_IndirectSpecularColor: {r: 0.44636172, g: 0.49617058, b: 0.574687, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1164,7 +1164,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 245043869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: UpgradeAction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &245043869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2100,7 +2112,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553056382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: UpgradeAction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &553056382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4125,7 +4149,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 868853752}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: UpgradeAction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &868853752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5986,7 +6022,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1317832723}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 103821934}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: UpgradeAction
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1317832723
 MonoBehaviour:
   m_ObjectHideFlags: 0
