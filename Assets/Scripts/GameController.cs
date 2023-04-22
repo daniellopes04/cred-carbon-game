@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     public static double carbonCreditGain;
     public static int progress;
     public static int gameEnded;
-    private int year;
+    public static int year;
     private int goalYear;
     private int month;
     private int actionID;
@@ -63,7 +63,7 @@ public class GameController : MonoBehaviour
             }
 
 
-            if (numberUpdates % (tickRate * 2) == 0)  // 1 mês a cada 2s
+            if (numberUpdates % (tickRate * 2) == 0)  // 1 mï¿½s a cada 2s
             {
                 numberUpdates = 1;
                 month++;
@@ -103,14 +103,14 @@ public class GameController : MonoBehaviour
             // Resource Calculations
             carbonCreditGain = (
                 0.1 + // Ganho passivo
-                Actions.Tree.getCarbonCreditIncome() + // Ganho por árvores
-                Actions.Thermal.getCarbonCreditIncome() + // Ganho por termelétricas
-                Actions.Solar.getCarbonCreditIncome() + // Ganho por painéis solares
-                Actions.Wind.getCarbonCreditIncome() // Ganho por turbinas eólicas
+                Actions.Tree.getCarbonCreditIncome() + // Ganho por ï¿½rvores
+                Actions.Thermal.getCarbonCreditIncome() + // Ganho por termelï¿½tricas
+                Actions.Solar.getCarbonCreditIncome() + // Ganho por painï¿½is solares
+                Actions.Wind.getCarbonCreditIncome() // Ganho por turbinas eï¿½licas
                 ) / tickRate;
             carbonCredit += carbonCreditGain;
 
-            totalCarbonCredit += carbonCreditGain ; // Calculando o crédito de carbono total
+            totalCarbonCredit += carbonCreditGain ; // Calculando o crï¿½dito de carbono total
 
             progress = (int) Math.Max((100 - totalCarbonCredit / ObjectiveFunction((year - 1997) * 12 + month)*100)*1.2,0);
 
