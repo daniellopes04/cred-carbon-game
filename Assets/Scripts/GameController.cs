@@ -26,6 +26,9 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayKnowledge;
     public TextMeshProUGUI displayCarbonCredit;
     public TextMeshProUGUI displayTrees;
+    public TextMeshProUGUI displayThermalValue;
+    public TextMeshProUGUI displaySolarPanelsValue;
+    public TextMeshProUGUI displayWindTurbinesValue;
     public TextMeshProUGUI displayYear;
     public TextMeshProUGUI displayMonth;
     public TextMeshProUGUI displayPlantTreesUpgradeCost;
@@ -139,6 +142,9 @@ public class GameController : MonoBehaviour
         //displayMonth.text = string.Format("Mes: {0}", month);
         displayYear.text = string.Format("Year: {0}", year);
         displayTrees.text = string.Format("{0} m2", Actions.Tree.trees*100);
+        displayThermalValue.text = Actions.Thermal.factories.ToString();
+        displaySolarPanelsValue.text = Actions.Solar.panels.ToString();
+        displayWindTurbinesValue.text = Actions.Wind.turbines.ToString();
         displayPlantTreesUpgradeCost.text = Actions.Tree.UpgradeCost().ToString();
         displayThermalUpgradeCost.text = Actions.Thermal.UpgradeCost().ToString();
         displaySolarPanelsUpgradeCost.text = Actions.Solar.UpgradeCost().ToString();
