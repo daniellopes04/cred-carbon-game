@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayTrees;
     public TextMeshProUGUI displayYear;
     public TextMeshProUGUI displayMonth;
+    public TextMeshProUGUI displayPlantTreesUpgradeCost;
+    public TextMeshProUGUI displayThermalUpgradeCost;
+    public TextMeshProUGUI displaySolarPanelsUpgradeCost;
+    public TextMeshProUGUI displayWindTurbinesUpgradeCost;
     private int numberUpdates;
     private int tickRate = 50;
 
@@ -135,6 +139,10 @@ public class GameController : MonoBehaviour
         //displayMonth.text = string.Format("Mes: {0}", month);
         displayYear.text = string.Format("Year: {0}", year);
         displayTrees.text = string.Format("{0} m2", Actions.Tree.trees*100);
+        displayPlantTreesUpgradeCost.text = Actions.Tree.UpgradeCost().ToString();
+        displayThermalUpgradeCost.text = Actions.Thermal.UpgradeCost().ToString();
+        displaySolarPanelsUpgradeCost.text = Actions.Solar.UpgradeCost().ToString();
+        displayWindTurbinesUpgradeCost.text = Actions.Wind.UpgradeCost().ToString();
     }
 
 
