@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44636172, g: 0.49617058, b: 0.574687, a: 1}
+  m_IndirectSpecularColor: {r: 0.44636154, g: 0.49617022, b: 0.57468665, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3258,7 +3258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 421624522}
+  nextActionUI: {fileID: 0}
 --- !u!114 &421624525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3953,7 +3955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 830663442}
+  nextActionUI: {fileID: 0}
 --- !u!1 &690473107
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,7 +4965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 830663442}
+  nextActionUI: {fileID: 0}
 --- !u!1 &830862670
 GameObject:
   m_ObjectHideFlags: 0
@@ -7804,7 +7810,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 1619903578}
+  nextActionUI: {fileID: 0}
 --- !u!1 &1218589074
 GameObject:
   m_ObjectHideFlags: 0
@@ -7860,7 +7868,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 0}
+  nextActionUI: {fileID: 0}
 --- !u!114 &1218589077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7957,7 +7967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 1239510009}
+  nextActionUI: {fileID: 0}
 --- !u!114 &1239510012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10446,7 +10458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 1619903578}
+  nextActionUI: {fileID: 0}
 --- !u!114 &1619903581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11586,7 +11600,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 1755176514}
+  nextActionUI: {fileID: 0}
 --- !u!114 &1755176517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12625,7 +12641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 421624522}
+  nextActionUI: {fileID: 0}
 --- !u!1 &1888905059
 GameObject:
   m_ObjectHideFlags: 0
@@ -14418,7 +14436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0203aa809589ca089ab45ff3983d6fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  previousActionUI: {fileID: 0}
   actionUI: {fileID: 1239510009}
+  nextActionUI: {fileID: 0}
 --- !u!1 &2050238138
 GameObject:
   m_ObjectHideFlags: 0

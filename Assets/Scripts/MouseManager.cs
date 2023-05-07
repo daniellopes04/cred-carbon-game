@@ -24,6 +24,11 @@ public class MouseManager : MonoBehaviour
     public Texture2D target;
     Vector2 vector = new Vector2(16, 16);
 
+    void Start()
+    {
+        Cursor.SetCursor(pointer, vector, CursorMode.Auto);
+    }
+
     public void OnMouseOver() {
         Cursor.SetCursor(target, vector, CursorMode.Auto);
     }
