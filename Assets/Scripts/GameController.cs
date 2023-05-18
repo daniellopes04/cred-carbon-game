@@ -36,11 +36,13 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayThermalUpgradeCost;
     public TextMeshProUGUI displaySolarPanelsUpgradeCost;
     public TextMeshProUGUI displayWindTurbinesUpgradeCost;
+    public GameObject gameOverPanel;
+    public GameObject winPanel;
     private int numberUpdates;
     private int tickRate = 50;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         gameEnded = 0;
         goalYear = 2050;
@@ -63,11 +65,13 @@ public class GameController : MonoBehaviour
             if (year >= 2050 || progress >= 100 || carbonCredit < 0)
             {
                 gameEnded = 2; // perdeu
+                gameOverPanel.SetActive(!gameOverPanel.activeSelf);
             }
 
             if (totalCarbonCredit>= carbonCreditGoal)
             {
                 gameEnded = 1; // ganhou
+                winPanel.SetActive(!winPanel.activeSelf);
             }
 
 
