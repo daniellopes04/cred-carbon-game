@@ -22,7 +22,8 @@ public class GameController : MonoBehaviour
     public static int year;
     private int goalYear;
     private int month;
-    private int actionID;
+    private static int actionID;
+    private static bool actionInProgress = false;    
     public TextMeshProUGUI displayKnowledge;
     public TextMeshProUGUI displayCarbonCredit;
     public TextMeshProUGUI displayTrees;
@@ -142,7 +143,7 @@ public class GameController : MonoBehaviour
         //displayMonth.text = string.Format("Mes: {0}", month);
         displayYear.text = string.Format("Year: {0}", year);
         displayTrees.text = string.Format("{0} m2", Actions.Tree.trees*100);
-        displayThermalValue.text = Actions.Thermal.factories.ToString();
+        displayThermalValue.text = string.Format("{0}", Actions.Thermal.factories);
         displaySolarPanelsValue.text = Actions.Solar.panels.ToString();
         displayWindTurbinesValue.text = Actions.Wind.turbines.ToString();
         displayPlantTreesUpgradeCost.text = Actions.Tree.UpgradeCost().ToString();
@@ -152,9 +153,24 @@ public class GameController : MonoBehaviour
     }
 
 
-    public void SetAction(int n)
+    public static void SetAction(int n)
     {
         actionID = n;
+    }
+
+    public static int GetAction()
+    {
+        return actionID;
+    }
+
+    public static bool GetActionInProgress()
+    {
+        return actionInProgress;
+    }
+
+    public static void SetActionInProgress(bool value)
+    {
+        actionInProgress = value;
     }
 
     public void SetGameSpeed(int newTickRate)

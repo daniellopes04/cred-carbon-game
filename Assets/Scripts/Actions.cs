@@ -52,6 +52,9 @@ public class Actions
                 if (CanAfford())
                 {
                     actionProgress += ticks;
+                    if (!CanvasController.IsBadgeOpen()) {
+                        GameController.SetActionInProgress(true);
+                    }
                 }
             }
             else
@@ -61,6 +64,7 @@ public class Actions
                 {
                     trees++;
                     actionProgress = 0;
+                    GameController.SetActionInProgress(false);
                 }
             }
         }
@@ -118,6 +122,9 @@ public class Actions
                 {
                     actionProgress += ticks;
                     GameController.carbonCredit -= CarbonCost;
+                    if (!CanvasController.IsBadgeOpen()) {
+                        GameController.SetActionInProgress(true);
+                    }
                 }
             }
             else
@@ -127,6 +134,7 @@ public class Actions
                 {
                     factories++;
                     actionProgress = 0;
+                    GameController.SetActionInProgress(false);
                 }
             }
         }
@@ -197,6 +205,9 @@ public class Actions
                 {
                     actionProgress += ticks;
                     GameController.carbonCredit -= CarbonCost;
+                    if (!CanvasController.IsBadgeOpen()) {
+                        GameController.SetActionInProgress(true);
+                    }
                 }
             }
             else
@@ -206,6 +217,7 @@ public class Actions
                 {
                     panels++;
                     actionProgress = 0;
+                    GameController.SetActionInProgress(false);
                 }
             }
         }
@@ -278,6 +290,9 @@ public class Actions
                 {
                     actionProgress += ticks;
                     GameController.carbonCredit -= CarbonCost;
+                    if (!CanvasController.IsBadgeOpen()) {
+                        GameController.SetActionInProgress(true);
+                    }
                 }
             }
             else
@@ -287,6 +302,7 @@ public class Actions
                 {
                     turbines++;
                     actionProgress = 0;
+                    GameController.SetActionInProgress(false);
                 }
             }
         }

@@ -9,6 +9,9 @@ public class CanvasController : MonoBehaviour
 {
     public Sprite greenButtonSprite;
     public Sprite greyButtonSprite;
+    public List<Sprite> actionSprites;
+    public List<GameObject> popUpBadges;
+    static int openBadgeIndex = -1;
     GraphicRaycaster m_Raycaster;
     PointerEventData m_PointerEventData;
     EventSystem m_EventSystem;
@@ -51,6 +54,7 @@ public class CanvasController : MonoBehaviour
                         buttonImage.sprite = greyButtonSprite;
                         isActionOn = false;
                         imageOn = null;
+                        GameController.SetAction(0);
                     } else {
                         buttonImage.sprite = greenButtonSprite;
 
@@ -64,6 +68,42 @@ public class CanvasController : MonoBehaviour
                 }
                 Debug.Log("Hit " + result.gameObject.name);
             }
+        }
+
+        if (GameController.GetActionInProgress()) {
+            OpenPopUpBadge();
+        } else {
+            ClosePopUpBadge();
+        }
+    }
+
+    public void OpenPopUpBadge() {  
+        if (openBadgeIndex == -1) {
+            var rnd = new System.Random();
+            openBadgeIndex = rnd.Next(0, popUpBadges.Count - 1);
+
+            Image popUpImage = popUpBadges[openBadgeIndex].GetComponent<Image>();
+            Animator anim = popUpBadges[openBadgeIndex].GetComponent<Animator>();
+
+            popUpImage.sprite = actionSprites[GameController.GetAction() - 1];
+            anim.SetTrigger("Open");
+        }
+    }
+
+    public static bool IsBadgeOpen() {
+        if (openBadgeIndex != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    public void ClosePopUpBadge() {
+        if (openBadgeIndex != -1) {
+            Image popUpImage = popUpBadges[openBadgeIndex].GetComponent<Image>();
+            Animator anim = popUpBadges[openBadgeIndex].GetComponent<Animator>();
+
+            anim.SetTrigger("Close");
+            openBadgeIndex = -1;
         }
     }
 }
