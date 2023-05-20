@@ -36,6 +36,13 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayThermalUpgradeCost;
     public TextMeshProUGUI displaySolarPanelsUpgradeCost;
     public TextMeshProUGUI displayWindTurbinesUpgradeCost;
+    public TextMeshProUGUI displayPlantTreesCCIncome;
+    public TextMeshProUGUI displayThermalCCIncome;
+    public TextMeshProUGUI displaySolarPanelsCCIncome;
+    public TextMeshProUGUI displayWindTurbinesCCIncome;
+    public TextMeshProUGUI displayThermalKnowledgeIncome;
+    public TextMeshProUGUI displaySolarPanelsKnowledgeIncome;
+    public TextMeshProUGUI displayWindTurbinesKnowledgeIncome;
     public GameObject gameOverPanel;
     public GameObject winPanel;
     private int numberUpdates;
@@ -154,6 +161,13 @@ public class GameController : MonoBehaviour
         displayThermalUpgradeCost.text = Actions.Thermal.UpgradeCost().ToString();
         displaySolarPanelsUpgradeCost.text = Actions.Solar.UpgradeCost().ToString();
         displayWindTurbinesUpgradeCost.text = Actions.Wind.UpgradeCost().ToString();
+        displayPlantTreesCCIncome.text = "+" + Actions.Tree.getCarbonCreditIncome().ToString("F2") + " CC/s" ;
+        displayThermalCCIncome.text = Actions.Thermal.getCarbonCreditIncome().ToString("F2") + " CC/s";
+        displaySolarPanelsCCIncome.text = Actions.Solar.getCarbonCreditIncome().ToString("F2") + " CC /s";
+        displayWindTurbinesCCIncome.text = Actions.Wind.getCarbonCreditIncome().ToString("F2") + " CC/s";
+        displayThermalKnowledgeIncome.text = "+" + Actions.Thermal.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
+        displaySolarPanelsKnowledgeIncome.text = "+" + Actions.Solar.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
+        displayWindTurbinesKnowledgeIncome.text = "+" + Actions.Wind.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
     }
 
 

@@ -107,7 +107,7 @@ public class Actions
         }
         public static double getCarbonCreditIncome()
         {
-            return -0.3 * factories;
+            return -0.3 * factories * (1 + 0.2 * upgradeCount);
         }
         public static double getKnowledgeIncome()
         {
