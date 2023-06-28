@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using System.Diagnostics;
 using System.Security.AccessControl;
 
 public class GameController : MonoBehaviour
@@ -43,6 +42,10 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayThermalKnowledgeIncome;
     public TextMeshProUGUI displaySolarPanelsKnowledgeIncome;
     public TextMeshProUGUI displayWindTurbinesKnowledgeIncome;
+    public TextMeshProUGUI displayPlantTreesUpgradeLevel;
+    public TextMeshProUGUI displayThermalUpgradeLevel;
+    public TextMeshProUGUI displaySolarPanelssUpgradeLevel;
+    public TextMeshProUGUI displayWindTurbineUpgradeLevel;
     public GameObject gameOverPanel;
     public GameObject winPanel;
     private int numberUpdates;
@@ -51,6 +54,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        progress = 50;
         gameEnded = 0;
         goalYear = 2050;
         carbonCredit = 0;
@@ -62,6 +66,10 @@ public class GameController : MonoBehaviour
         CCgoalDifficulty = 1;
         totalCarbonCredit = 50;
         carbonCreditGoal = 100000 * CCgoalDifficulty;
+        Actions.Tree.ResetValues();
+        Actions.Thermal.ResetValues();
+        Actions.Solar.ResetValues();
+        Actions.Wind.ResetValues();
     }
 
     // FixedUpdate is called 50 times per second
@@ -69,7 +77,7 @@ public class GameController : MonoBehaviour
     {
         if (gameEnded == 0)
         {
-            if (year >= 2050 || progress >= 100 || carbonCredit < 0)
+            if (year >= 2050 || progress <= -50|| carbonCredit < 0)
             {
                 gameEnded = 2; // perdeu
                 gameOverPanel.SetActive(!gameOverPanel.activeSelf);
@@ -131,8 +139,12 @@ public class GameController : MonoBehaviour
 
             totalCarbonCredit += carbonCreditGain ; // Calculando o cr�dito de carbono total
 
-            progress = (int) Math.Max((100 - totalCarbonCredit / ObjectiveFunction((year - 1997) * 12 + month)*100)*1.2,0);
+            progress = (int) Math.Min(((carbonCreditGain*tickRate / ObjectiveFunction((year - 1997) * 12 + month)-1)*100),50);
 
+            Debug.Log("Progress: " + GameController.progress);
+            Debug.Log("CC " + carbonCreditGain*tickRate);
+
+            Debug.Log("OBJ: " + ObjectiveFunction((year - 1997) * 12 + month) );
 
             knowledgeGain = (
                 0.01 +
@@ -168,6 +180,10 @@ public class GameController : MonoBehaviour
         displayThermalKnowledgeIncome.text = "+" + Actions.Thermal.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
         displaySolarPanelsKnowledgeIncome.text = "+" + Actions.Solar.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
         displayWindTurbinesKnowledgeIncome.text = "+" + Actions.Wind.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
+        displayPlantTreesUpgradeLevel.text = "Level: " + Actions.Tree.upgradeCount.ToString();
+        displayThermalUpgradeLevel.text = "Level: " + Actions.Thermal.upgradeCount.ToString();
+        displaySolarPanelssUpgradeLevel.text = "Level: " + Actions.Solar.upgradeCount.ToString();
+        displayWindTurbineUpgradeLevel.text = "Level: " + Actions.Wind.upgradeCount.ToString();
     }
 
 
@@ -198,7 +214,7 @@ public class GameController : MonoBehaviour
 
     public double ObjectiveFunction(double n)    // Fun��o quadr�tica que serve para c�lculo do progresso do jogador | Objetivo = 100k CC
     {
-        return CCgoalDifficulty * 0.2472 * n * n;
+        return Math.Abs(CCgoalDifficulty * (0.0012214 * n * n - 0.0221486 * n));
     }
 
     public void UpgradeAction(int n)

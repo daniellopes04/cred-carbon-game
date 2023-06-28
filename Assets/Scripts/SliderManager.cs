@@ -19,13 +19,19 @@ public class SliderManager : MonoBehaviour
     IEnumerator UpdateProgress() {
         for(;;)
         {
-            if (GameController.progress >= 100) {
-            }
+            if (GameController.progress > 0)
+            {
 
-            if (GameController.progress > 70 && GameController.progress < 90) {
-                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
-            } else if (GameController.progress >= 90) {
-                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
+                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = green;
+                //slider.direction = Slider.Direction.LeftToRight;
+            }
+            else
+            {
+                //slider.direction = Slider.Direction.RightToLeft;
+                if (GameController.progress < -25)
+                    slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
+                else
+                    slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
             }
 
             slider.value = GameController.progress;
@@ -35,6 +41,7 @@ public class SliderManager : MonoBehaviour
     }
 
     void Start() {
+
         StartCoroutine(UpdateProgress());
     }
 }
