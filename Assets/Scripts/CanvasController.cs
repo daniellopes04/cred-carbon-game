@@ -9,6 +9,8 @@ public class CanvasController : MonoBehaviour
 {
     public Sprite greenButtonSprite;
     public Sprite greyButtonSprite;
+    public List<Button> actionLockedButtons;
+    public List<Button> actionButtons;
     public List<Sprite> actionSprites;
     public List<GameObject> popUpBadges;
     static int openBadgeIndex = -1;
@@ -46,7 +48,7 @@ public class CanvasController : MonoBehaviour
             //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
             foreach (RaycastResult result in results)
             {
-                if (result.gameObject.tag == "ActionButton")
+                if (result.gameObject.tag == "ActionButton" && result.gameObject.GetComponent<Button>().interactable)
                 {
                     Image buttonImage = result.gameObject.GetComponent<Image>();
 
@@ -104,6 +106,26 @@ public class CanvasController : MonoBehaviour
 
             anim.SetTrigger("Close");
             openBadgeIndex = -1;
+        }
+    }
+
+    public void UnlockButton(int actionID) {
+        bool canAfford = false;
+
+        switch (actionID)
+        {
+            case 1:
+                canAfford = Actions.Solar.CanAffordUpgrade();
+                break;
+            case 2:
+                canAfford = Actions.Wind.CanAffordUpgrade();
+                break;
+        }
+
+        if (canAfford) {
+            actionLockedButtons[actionID - 1].gameObject.SetActive(false);
+            actionButtons[actionID - 1].gameObject.SetActive(true);
+            actionButtons[actionID - 1].interactable = true;
         }
     }
 }

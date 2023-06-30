@@ -48,6 +48,8 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayWindTurbineUpgradeLevel;
     public GameObject gameOverPanel;
     public GameObject winPanel;
+    public List<Button> actionButtons;
+
     private int numberUpdates;
     private int tickRate = 50;
 
@@ -125,6 +127,10 @@ public class GameController : MonoBehaviour
                     break;
 
             }
+
+            actionButtons[0].interactable = Actions.Thermal.CanAfford() ? true : false;
+            actionButtons[1].interactable = Actions.Solar.CanAfford() ? true : false;
+            actionButtons[2].interactable = Actions.Wind.CanAfford() ? true : false;
 
 
             // Resource Calculations
