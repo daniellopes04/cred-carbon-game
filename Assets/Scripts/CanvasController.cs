@@ -56,7 +56,6 @@ public class CanvasController : MonoBehaviour
                         buttonImage.sprite = greyButtonSprite;
                         isActionOn = false;
                         imageOn = null;
-                        GameController.SetAction(0);
                     } else {
                         buttonImage.sprite = greenButtonSprite;
 

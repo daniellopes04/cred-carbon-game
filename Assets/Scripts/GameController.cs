@@ -147,10 +147,10 @@ public class GameController : MonoBehaviour
 
             progress = (int) Math.Min(((carbonCreditGain*tickRate / ObjectiveFunction((year - 1997) * 12 + month)-1)*100),50);
 
-            Debug.Log("Progress: " + GameController.progress);
-            Debug.Log("CC " + carbonCreditGain*tickRate);
+            //Debug.Log("Progress: " + GameController.progress);
+            //Debug.Log("CC " + carbonCreditGain*tickRate);
 
-            Debug.Log("OBJ: " + ObjectiveFunction((year - 1997) * 12 + month) );
+            //Debug.Log("OBJ: " + ObjectiveFunction((year - 1997) * 12 + month) );
 
             knowledgeGain = (
                 0.01 +
@@ -195,7 +195,9 @@ public class GameController : MonoBehaviour
 
     public static void SetAction(int n)
     {
-        actionID = n;
+        //Debug.Log(actionID + " trocando para " + n);
+        if (actionID == n) actionID = 0;
+        else actionID = n;
     }
 
     public static int GetAction()
