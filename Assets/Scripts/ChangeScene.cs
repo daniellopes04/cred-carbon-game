@@ -10,4 +10,13 @@ public class ChangeScene : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(3);
+    }
 }
