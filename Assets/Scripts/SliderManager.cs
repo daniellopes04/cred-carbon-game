@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,20 +22,26 @@ public class SliderManager : MonoBehaviour
         {
             if (GameController.progress > 0)
             {
-
+                RectTransform fillAreaRectTransform = slider.gameObject.transform.Find("Fill Area").GetComponent<RectTransform>();
+                fillAreaRectTransform.anchorMin = new Vector2(0.5f, 0.25f);
+                fillAreaRectTransform.anchorMax = new Vector2(1, 0.75f);
                 slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = green;
-                //slider.direction = Slider.Direction.LeftToRight;
+                slider.direction = Slider.Direction.LeftToRight;
             }
             else
             {
-                //slider.direction = Slider.Direction.RightToLeft;
+                RectTransform fillAreaRectTransform = slider.gameObject.transform.Find("Fill Area").GetComponent<RectTransform>();
+                fillAreaRectTransform.anchorMin = new Vector2(0, 0.25f);
+                fillAreaRectTransform.anchorMax = new Vector2(0.5f, 0.75f);
+                slider.direction = Slider.Direction.RightToLeft;
                 if (GameController.progress < -25)
                     slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
                 else
                     slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
             }
 
-            slider.value = GameController.progress;
+
+            slider.value = Math.Abs(GameController.progress);
             valueText.text = GameController.progress.ToString();
             yield return new WaitForSeconds(.2f);
         }
