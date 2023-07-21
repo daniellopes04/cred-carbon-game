@@ -2,19 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class TimeSliderManager : MonoBehaviour
 {
-    public TMP_Text valueText;
     public Slider slider;
     Color green = new Color(50f/255f, 233f/255f, 106f/255f);
     Color yellow = new Color(233f/255f, 184f/255f, 50f/255f);
     Color red = new Color(210f/255f, 41f/255f, 41f/255f);
-
-    void OnSliderChanged(float value) {
-        valueText.text = value.ToString();
-    }
 
     IEnumerator UpdateProgress() {
         for(;;)
@@ -29,7 +23,6 @@ public class TimeSliderManager : MonoBehaviour
             }
 
             slider.value = GameController.year;
-            valueText.text = GameController.year.ToString();
             yield return new WaitForSeconds(.2f);
         }
     }
