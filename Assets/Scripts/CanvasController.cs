@@ -67,7 +67,7 @@ public class CanvasController : MonoBehaviour
                         imageOn = result.gameObject.GetComponent<Image>();
                     }
                 }
-                Debug.Log("Hit " + result.gameObject.name);
+                // Debug.Log("Hit " + result.gameObject.name);
             }
         }
 
@@ -125,6 +125,33 @@ public class CanvasController : MonoBehaviour
             actionLockedButtons[actionID - 1].gameObject.SetActive(false);
             actionButtons[actionID - 1].gameObject.SetActive(true);
             actionButtons[actionID - 1].interactable = true;
+        }
+    }
+
+    public static void UnlockAction(int actionID) {
+        GameObject unlockButton, lockedButton, actionButton;
+        switch (actionID)
+        {
+            case 1:
+                unlockButton = GameObject.FindWithTag("UnlockButtonSolar");
+                unlockButton.SetActive(false);
+
+                lockedButton = GameObject.Find("SolarLockedButton");
+                lockedButton.SetActive(false);
+
+                actionButton = GameObject.Find("SolarPanelsReferenceButton");
+                actionButton.transform.Find("SolarPanelsButton").gameObject.SetActive(true);
+                break;
+            case 2:
+                unlockButton = GameObject.FindWithTag("UnlockButtonWind");
+                unlockButton.SetActive(false);
+
+                lockedButton = GameObject.Find("WindLockedButton");
+                lockedButton.SetActive(false);
+
+                actionButton = GameObject.Find("WindTurbinesReferenceButton");
+                actionButton.transform.Find("WindTurbinesButton").gameObject.SetActive(true);
+                break;
         }
     }
 }

@@ -229,6 +229,10 @@ public class Actions
         {
             if (CanAffordUpgrade())
             {
+                if (!unlocked && upgradeCount == 0) {
+                    CanvasController.UnlockAction(1);
+                    unlocked = true;
+                }
                 GameController.knowledge -= UpgradeCost();
                 upgradeCount++;
             }
@@ -332,6 +336,10 @@ public class Actions
         {
             if (CanAffordUpgrade())
             {
+                if (!unlocked && upgradeCount == 0) {
+                    CanvasController.UnlockAction(2);
+                    unlocked = true;
+                }
                 GameController.knowledge -= UpgradeCost();
                 upgradeCount++;
                 constructionTime *= 0.8;

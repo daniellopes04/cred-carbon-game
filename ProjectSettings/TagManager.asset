@@ -8,6 +8,8 @@ TagManager:
   - Region
   - ActionButton
   - Clickable
+  - UnlockButtonSolar
+  - UnlockButtonWind
   layers:
   - Default
   - TransparentFX

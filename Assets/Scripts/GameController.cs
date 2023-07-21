@@ -34,7 +34,9 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayPlantTreesUpgradeCost;
     public TextMeshProUGUI displayThermalUpgradeCost;
     public TextMeshProUGUI displaySolarPanelsUpgradeCost;
+    public TextMeshProUGUI displaySolarPanelsUnlockCost;
     public TextMeshProUGUI displayWindTurbinesUpgradeCost;
+    public TextMeshProUGUI displayWindTurbinesUnlockCost;
     public TextMeshProUGUI displayPlantTreesCCIncome;
     public TextMeshProUGUI displayThermalCCIncome;
     public TextMeshProUGUI displaySolarPanelsCCIncome;
@@ -178,7 +180,9 @@ public class GameController : MonoBehaviour
         displayPlantTreesUpgradeCost.text = Actions.Tree.UpgradeCost().ToString();
         displayThermalUpgradeCost.text = Actions.Thermal.UpgradeCost().ToString();
         displaySolarPanelsUpgradeCost.text = Actions.Solar.UpgradeCost().ToString();
+        displaySolarPanelsUnlockCost.text = Actions.Solar.UpgradeCost().ToString();
         displayWindTurbinesUpgradeCost.text = Actions.Wind.UpgradeCost().ToString();
+        displayWindTurbinesUnlockCost.text = Actions.Wind.UpgradeCost().ToString();
         displayPlantTreesCCIncome.text = "+" + Actions.Tree.getCarbonCreditIncome().ToString("F2") + " CC/s" ;
         displayThermalCCIncome.text = Actions.Thermal.getCarbonCreditIncome().ToString("F2") + " CC/s";
         displaySolarPanelsCCIncome.text = Actions.Solar.getCarbonCreditIncome().ToString("F2") + " CC /s";
@@ -186,8 +190,8 @@ public class GameController : MonoBehaviour
         displayThermalKnowledgeIncome.text = "+" + Actions.Thermal.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
         displaySolarPanelsKnowledgeIncome.text = "+" + Actions.Solar.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
         displayWindTurbinesKnowledgeIncome.text = "+" + Actions.Wind.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
-        displayPlantTreesUpgradeLevel.text = "Level: " + Actions.Tree.upgradeCount.ToString();
-        displayThermalUpgradeLevel.text = "Level: " + Actions.Thermal.upgradeCount.ToString();
+        displayPlantTreesUpgradeLevel.text = "Level: " + (Actions.Tree.upgradeCount + 1).ToString();
+        displayThermalUpgradeLevel.text = "Level: " + (Actions.Thermal.upgradeCount + 1).ToString();
         displaySolarPanelssUpgradeLevel.text = "Level: " + Actions.Solar.upgradeCount.ToString();
         displayWindTurbineUpgradeLevel.text = "Level: " + Actions.Wind.upgradeCount.ToString();
     }
