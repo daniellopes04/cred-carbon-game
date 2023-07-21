@@ -9,6 +9,8 @@ public class SliderManager : MonoBehaviour
 {
     public TMP_Text valueText;
     public Slider slider;
+    public Sprite rightLoadingBar;
+    public Sprite leftLoadingBar;
     Color green = new Color(50f/255f, 233f/255f, 106f/255f);
     Color yellow = new Color(233f/255f, 184f/255f, 50f/255f);
     Color red = new Color(210f/255f, 41f/255f, 41f/255f);
@@ -22,6 +24,7 @@ public class SliderManager : MonoBehaviour
         {
             if (GameController.progress > 0)
             {
+                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().sprite = rightLoadingBar;
                 RectTransform fillAreaRectTransform = slider.gameObject.transform.Find("Fill Area").GetComponent<RectTransform>();
                 fillAreaRectTransform.anchorMin = new Vector2(0.5f, 0.25f);
                 fillAreaRectTransform.anchorMax = new Vector2(1, 0.75f);
@@ -30,6 +33,7 @@ public class SliderManager : MonoBehaviour
             }
             else
             {
+                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().sprite = leftLoadingBar;
                 RectTransform fillAreaRectTransform = slider.gameObject.transform.Find("Fill Area").GetComponent<RectTransform>();
                 fillAreaRectTransform.anchorMin = new Vector2(0, 0.25f);
                 fillAreaRectTransform.anchorMax = new Vector2(0.5f, 0.75f);
