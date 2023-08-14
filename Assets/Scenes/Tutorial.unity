@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44636172, g: 0.49617058, b: 0.574687, a: 1}
+  m_IndirectSpecularColor: {r: 0.44636154, g: 0.49617022, b: 0.57468665, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7365,7 +7365,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 337594686}
           m_TargetAssemblyTypeName: MouseManager, Assembly-CSharp
           m_MethodName: OnMouseOver
           m_Mode: 1
@@ -7381,7 +7381,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 337594686}
           m_TargetAssemblyTypeName: MouseManager, Assembly-CSharp
           m_MethodName: OnMouseExit
           m_Mode: 1
@@ -7437,21 +7437,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1862466196}
-        m_TargetAssemblyTypeName: PopupMessage, Assembly-CSharp
-        m_MethodName: OpenCloseAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: Start
+      - m_Target: {fileID: 665523793}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: NextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11171,7 +11159,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Let's go
+  m_text: Let's go!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13927,7 +13915,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 98.2, y: -73.29999}
+  m_AnchoredPosition: {x: 98.20001, y: -73.29999}
   m_SizeDelta: {x: -570, y: -423.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065821870
@@ -14026,7 +14014,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 337594686}
           m_TargetAssemblyTypeName: MouseManager, Assembly-CSharp
           m_MethodName: OnMouseOver
           m_Mode: 1
@@ -14042,7 +14030,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 337594686}
           m_TargetAssemblyTypeName: MouseManager, Assembly-CSharp
           m_MethodName: OnMouseExit
           m_Mode: 1
@@ -14417,7 +14405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Let's go
+  m_text: Let's go!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -30284,7 +30272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 98.2, y: -43.799988}
+  m_AnchoredPosition: {x: 98.20001, y: -43.799988}
   m_SizeDelta: {x: -570, y: -423.99997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2091846946
