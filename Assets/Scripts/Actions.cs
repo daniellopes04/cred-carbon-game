@@ -44,7 +44,7 @@ public class Actions
 
         public static int UpgradeCost()
         {
-            return (int)Math.Floor(upgradeCost * Math.Pow(1.1, upgradeCount));
+            return (int)Math.Floor(upgradeCost * Math.Pow(1.2, upgradeCount));
         }
 
         public static void Upgrade()
@@ -138,7 +138,7 @@ public class Actions
         }
         public static double getCarbonCreditIncome()
         {
-            return -0.3 * factories * (1 + 0.2 * upgradeCount);
+            return -0.5 * factories * (1 + 0.2 * upgradeCount);
         }
         public static double getKnowledgeIncome()
         {
@@ -351,7 +351,7 @@ public class Actions
         }
         public static double getKnowledgeIncome()
         {
-            return 0.2 * turbines * 1 ;
+            return 0.3 * turbines * 1 ;
         }
 
         public static void BuildTurbine(int ticks)
