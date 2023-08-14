@@ -2182,6 +2182,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1862466195}
   winPanel: {fileID: 424748639}
   tickRate: 214748364
+  isTutorial: 1
   tutorialPopUps:
   - {fileID: 1984607984}
   - {fileID: 1778044169}
