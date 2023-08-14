@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7753f61084bf38c4fa02f3265687a98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carbonCreditGoal: 100000
   displayKnowledge: {fileID: 1297454526}
   displayCarbonCredit: {fileID: 1230040292}
   displayTrees: {fileID: 870719495}
@@ -1370,6 +1371,9 @@ MonoBehaviour:
   displayWindTurbineUpgradeLevel: {fileID: 1315681219}
   gameOverPanel: {fileID: 153516427}
   winPanel: {fileID: 1984607984}
+  tickRate: 50
+  isTutorial: 0
+  tutorialPopUps: []
   actionButtons:
   - {fileID: 1802360444}
   - {fileID: 830862672}
@@ -6276,10 +6280,10 @@ RectTransform:
   m_Father: {fileID: 1481947505}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10.58}
-  m_SizeDelta: {x: 49.44, y: 45.82}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1.6999998, y: -26}
+  m_SizeDelta: {x: 49.440002, y: 45.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &639417847
 MonoBehaviour:

@@ -16,11 +16,11 @@ public class TimeSliderManager : MonoBehaviour
             if (GameController.year >= 2050) {
             }
 
-            if (GameController.year > 2034 && GameController.year < 2044) {
-                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
-            } else if (GameController.year >= 2044) {
-                slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
-            }
+            // if (GameController.year > 2034 && GameController.year < 2044) {
+            //     slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = yellow;
+            // } else if (GameController.year >= 2044) {
+            //     slider.gameObject.transform.Find("Fill Area").Find("Fill").GetComponent<Image>().color = red;
+            // }
 
             slider.value = GameController.year;
             yield return new WaitForSeconds(.2f);

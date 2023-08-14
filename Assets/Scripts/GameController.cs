@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public static double carbonCredit;
     public static double CCgoalDifficulty;
     public static double totalCarbonCredit;
-    public static double carbonCreditGoal;
+    public double carbonCreditGoal;
     public static double carbonCreditGain;
     public static int progress;
     public static int gameEnded;
@@ -50,10 +50,13 @@ public class GameController : MonoBehaviour
     public TextMeshProUGUI displayWindTurbineUpgradeLevel;
     public GameObject gameOverPanel;
     public GameObject winPanel;
+    public int tickRate;
+    public int isTutorial;
+    public List<GameObject> tutorialPopUps;
     public List<Button> actionButtons;
 
+    private int currentTutorialStep = 0;
     private int numberUpdates;
-    private int tickRate = 50;
 
     // Start is called before the first frame update
     public void Start()
@@ -69,11 +72,15 @@ public class GameController : MonoBehaviour
         actionID = 0;
         CCgoalDifficulty = 1;
         totalCarbonCredit = 50;
-        carbonCreditGoal = 100000 * CCgoalDifficulty;
+        carbonCreditGoal *= CCgoalDifficulty;
         Actions.Tree.ResetValues();
         Actions.Thermal.ResetValues();
         Actions.Solar.ResetValues();
         Actions.Wind.ResetValues();
+        if (isTutorial == 1) {
+            Animator anim = tutorialPopUps[currentTutorialStep].GetComponent<Animator>();
+            anim.SetTrigger("Open");
+        }
     }
 
     // FixedUpdate is called 50 times per second
@@ -183,13 +190,13 @@ public class GameController : MonoBehaviour
         displaySolarPanelsUnlockCost.text = Actions.Solar.UpgradeCost().ToString();
         displayWindTurbinesUpgradeCost.text = Actions.Wind.UpgradeCost().ToString();
         displayWindTurbinesUnlockCost.text = Actions.Wind.UpgradeCost().ToString();
-        displayPlantTreesCCIncome.text = "+" + Actions.Tree.getCarbonCreditIncome().ToString("F2") + " CC/s" ;
-        displayThermalCCIncome.text = Actions.Thermal.getCarbonCreditIncome().ToString("F2") + " CC/s";
-        displaySolarPanelsCCIncome.text = Actions.Solar.getCarbonCreditIncome().ToString("F2") + " CC /s";
-        displayWindTurbinesCCIncome.text = Actions.Wind.getCarbonCreditIncome().ToString("F2") + " CC/s";
-        displayThermalKnowledgeIncome.text = "+" + Actions.Thermal.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
-        displaySolarPanelsKnowledgeIncome.text = "+" + Actions.Solar.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
-        displayWindTurbinesKnowledgeIncome.text = "+" + Actions.Wind.getKnowledgeIncome().ToString("F2") + " Knowledge/s";
+        displayPlantTreesCCIncome.text = "+" + Actions.Tree.getCarbonCreditIncome().ToString("F2") ;
+        displayThermalCCIncome.text = Actions.Thermal.getCarbonCreditIncome().ToString("F2");
+        displaySolarPanelsCCIncome.text = Actions.Solar.getCarbonCreditIncome().ToString("F2");
+        displayWindTurbinesCCIncome.text = Actions.Wind.getCarbonCreditIncome().ToString("F2");
+        displayThermalKnowledgeIncome.text = "+" + Actions.Thermal.getKnowledgeIncome().ToString("F2");
+        displaySolarPanelsKnowledgeIncome.text = "+" + Actions.Solar.getKnowledgeIncome().ToString("F2");
+        displayWindTurbinesKnowledgeIncome.text = "+" + Actions.Wind.getKnowledgeIncome().ToString("F2");
         displayPlantTreesUpgradeLevel.text = "Level: " + (Actions.Tree.upgradeCount + 1).ToString();
         displayThermalUpgradeLevel.text = "Level: " + (Actions.Thermal.upgradeCount + 1).ToString();
         displaySolarPanelssUpgradeLevel.text = "Level: " + Actions.Solar.upgradeCount.ToString();
@@ -227,6 +234,14 @@ public class GameController : MonoBehaviour
     public double ObjectiveFunction(double n)    // Fun��o quadr�tica que serve para c�lculo do progresso do jogador | Objetivo = 100k CC
     {
         return Math.Abs(CCgoalDifficulty * (0.0012214 * n * n - 0.0221486 * n));
+    }
+
+    public void NextTutorialStep() {
+        Animator anim = tutorialPopUps[currentTutorialStep].GetComponent<Animator>();
+        anim.SetTrigger("Close");
+        currentTutorialStep++;
+        anim = tutorialPopUps[currentTutorialStep].GetComponent<Animator>();
+        anim.SetTrigger("Open");
     }
 
     public void UpgradeAction(int n)
