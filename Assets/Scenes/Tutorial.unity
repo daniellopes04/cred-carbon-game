@@ -2182,7 +2182,6 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1862466195}
   winPanel: {fileID: 424748639}
   tickRate: 214748364
-  isTutorial: 1
   tutorialPopUps:
   - {fileID: 1984607984}
   - {fileID: 1778044169}
@@ -4348,10 +4347,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 482242620}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1000
+  m_MinValue: 1958
+  m_MaxValue: 3494
   m_WholeNumbers: 1
-  m_Value: 1
+  m_Value: 1958
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
