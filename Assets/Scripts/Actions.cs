@@ -57,7 +57,7 @@ public class Actions
         }
         public static double getCarbonCreditIncome()
         {
-            return 0.1 * trees * (1+0.2*upgradeCount);
+            return 0.1 * trees * (1+0.12*upgradeCount);
         }
 
 

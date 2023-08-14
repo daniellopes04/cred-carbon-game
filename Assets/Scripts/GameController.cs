@@ -156,7 +156,7 @@ public class GameController : MonoBehaviour
 
             progress = (int) Math.Min(((carbonCreditGain*tickRate / ObjectiveFunction((year - 1997) * 12 + month)-1)*100),50);
 
-            //Debug.Log("Progress: " + GameController.progress);
+            //Debug.Log("Progress: " + (float)Math.Log(GameController.totalCarbonCredit,1.001f));
             //Debug.Log("CC " + carbonCreditGain*tickRate);
 
             //Debug.Log("OBJ: " + ObjectiveFunction((year - 1997) * 12 + month) );
