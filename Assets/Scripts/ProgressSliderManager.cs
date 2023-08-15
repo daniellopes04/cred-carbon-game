@@ -18,8 +18,8 @@ public class ProgressSliderManager : MonoBehaviour
         {
             slowStart = (float) Math.Max(0, (90000 - GameController.totalCarbonCredit) / 90000);
             slider.value = (float) (Math.Log(GameController.totalCarbonCredit,1.001f)*(1-slowStart) + Math.Log(GameController.totalCarbonCredit, 1.001f)*0.5*slowStart);
-            Debug.Log("Progress: " + slider.value);
-            Debug.Log("Progress: " + (Math.Log(GameController.totalCarbonCredit, 1.001f) * (1 - slowStart) + Math.Log(GameController.totalCarbonCredit, 1.001f) * 0.5 * slowStart));
+            //Debug.Log("Progress: " + slider.value);
+            //Debug.Log("Progress: " + (Math.Log(GameController.totalCarbonCredit, 1.001f) * (1 - slowStart) + Math.Log(GameController.totalCarbonCredit, 1.001f) * 0.5 * slowStart));
             yield return new WaitForSeconds(.2f);
         }
     }

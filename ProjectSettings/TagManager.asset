@@ -10,6 +10,7 @@ TagManager:
   - Clickable
   - UnlockButtonSolar
   - UnlockButtonWind
+  - Panel
   layers:
   - Default
   - TransparentFX

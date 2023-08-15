@@ -66,6 +66,8 @@ public class CanvasController : MonoBehaviour
                         isActionOn = true;
                         imageOn = result.gameObject.GetComponent<Image>();
                     }
+                } else if (result.gameObject.tag == "Panel" ) {
+                    break;
                 }
                 // Debug.Log("Hit " + result.gameObject.name);
             }

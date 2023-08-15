@@ -11,7 +11,7 @@ public class SliderManager : MonoBehaviour
     public Slider slider;
     public Sprite rightLoadingBar;
     public Sprite leftLoadingBar;
-    Color green = new Color(50f/255f, 233f/255f, 106f/255f);
+    Color green = new Color(50f/255f, 255f/255f, 50f/255f);
     Color yellow = new Color(233f/255f, 184f/255f, 50f/255f);
     Color red = new Color(210f/255f, 41f/255f, 41f/255f);
 
